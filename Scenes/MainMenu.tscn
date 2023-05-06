@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Fonts/ShinGo.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/AOTFShinGoProRegular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -10,10 +11,12 @@ font_data = ExtResource( 2 )
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 
 [node name="Credits" type="Label" parent="Panel"]
 anchor_left = 1.0
@@ -25,33 +28,49 @@ margin_top = -22.0
 custom_fonts/font = ExtResource( 1 )
 text = "Made by Nekode"
 
-[node name="Button Container" type="VBoxContainer" parent="Panel"]
+[node name="ButtonContainer" type="VBoxContainer" parent="Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -96.0
-margin_top = 16.0
-margin_right = 98.0
-margin_bottom = 130.0
+margin_left = -97.0
+margin_top = -38.334
+margin_right = 97.0
+margin_bottom = 123.666
 
-[node name="Start" type="Button" parent="Panel/Button Container"]
+[node name="Start" type="Button" parent="Panel/ButtonContainer"]
 margin_right = 194.0
-margin_bottom = 51.0
+margin_bottom = 46.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Start"
 
-[node name="Separator" type="HSeparator" parent="Panel/Button Container"]
-margin_top = 55.0
+[node name="Separator" type="HSeparator" parent="Panel/ButtonContainer"]
+margin_top = 50.0
 margin_right = 194.0
-margin_bottom = 59.0
+margin_bottom = 54.0
 
-[node name="Quit" type="Button" parent="Panel/Button Container"]
-margin_top = 63.0
+[node name="Options" type="Button" parent="Panel/ButtonContainer"]
+margin_top = 58.0
 margin_right = 194.0
-margin_bottom = 114.0
+margin_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+
+[node name="Separator2" type="HSeparator" parent="Panel/ButtonContainer"]
+margin_top = 108.0
+margin_right = 194.0
+margin_bottom = 112.0
+
+[node name="Quit" type="Button" parent="Panel/ButtonContainer"]
+margin_top = 116.0
+margin_right = 194.0
+margin_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -68,3 +87,6 @@ margin_right = 149.0
 margin_bottom = 59.0
 custom_fonts/font = SubResource( 1 )
 text = "KittyKana"
+
+[connection signal="pressed" from="Panel/ButtonContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Panel/ButtonContainer/Quit" to="." method="_on_Quit_pressed"]
